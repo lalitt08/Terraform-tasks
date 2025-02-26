@@ -19,17 +19,17 @@ variable "private_subnet2_cidr" {
 }
 
 variable "elasticip" {
-  default = "eipalloc-0906fc712cf2f1110"
+  default = "eipalloc-0e40f346adb90d653"
 }
 
 variable "frontendami" {
-  default = "ami-00e86b28eef799659"
+  default = "ami-022c437c112e655ca"
 }
 
 variable "backendami" {
-  default = "ami-0ecb1d91802e301d6"
+  default = "ami-022c437c112e655ca"
 }
 
 variable "databaseami" {
-  default = "ami-0617ba792dec09fbd"
+  default = "ami-022c437c112e655ca"
 }
