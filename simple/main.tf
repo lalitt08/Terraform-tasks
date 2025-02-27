@@ -21,7 +21,7 @@ resource "aws_subnet" "Publicsubnet1" {
 resource "aws_subnet" "Publicsubnet2" {
   vpc_id            = aws_vpc.Myvpc.id
   cidr_block        = var.public_subnet2_cidr
-  availability_zone = "us-east-2c"
+  availability_zone = "us-east-1c"
   tags = {
     Name = "Publicsubnet2"
   }
