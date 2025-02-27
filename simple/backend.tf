@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "samplebucketterra"
+    bucket = "samplebucketterra010"
     region = "us-east-1"
   }
 }
