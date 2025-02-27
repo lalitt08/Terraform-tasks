@@ -217,15 +217,15 @@ resource "aws_instance" "database_instance" {
 
 # Generate inventory file for Ansible
 resource "local_file" "inventory" {
-  filename = "${path.module}/inventory.ini"
+  filename = "./inventory.ini"
   content  = <<-EOT
     [frontend]
-    ${aws_instance.frontend_instance.public_ip}
+    ${aws_instance.frontend_instance.public_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/var/lib/jenkins/sample.pem
 
     [backend]
-    ${aws_instance.backend_instance.private_ip}
+    ${aws_instance.backend_instance.private_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/var/lib/jenkins/sample.pem ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -i /var/lib/jenkins/sample.pem ubuntu@${aws_instance.frontend_instance.public_ip}"'
 
     [database]
-    ${aws_instance.database_instance.private_ip}
+    ${aws_instance.database_instance.private_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/var/lib/jenkins/sample.pem ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -i /var/lib/jenkins/sample.pem ubuntu@${aws_instance.frontend_instance.public_ip}"'
   EOT
 }
